@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light theme - Pearl white with soft pastels */
+    --background: 220 13% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 195 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 195 50% 85%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 270 50% 85%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 195 85% 60%;
+
+    --radius: 0.75rem;
+
+    /* Gauge colors - Light theme */
+    --gauge-pressure: 210 100% 35%;
+    --gauge-distance: 186 100% 37%;
+    --gauge-temperature: 16 100% 60%;
+
+    /* Glass effects */
+    --glass-bg: 0 0% 100%;
+    --glass-border: 195 50% 85%;
+    
+    /* Neon glows - subtle for light mode */
+    --neon-cyan: 180 100% 70%;
+    --neon-magenta: 300 100% 70%;
+    --neon-orange: 25 100% 65%;
+  }
+
+  .dark {
+    /* Dark theme - Deep navy black with neon accents */
+    --background: 220 60% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 220 45% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 45% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 60% 6%;
+
+    --secondary: 220 40% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 40% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 300 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 40% 20%;
+    --input: 220 40% 20%;
+    --ring: 180 100% 50%;
+
+    /* Gauge colors - Dark theme */
+    --gauge-pressure: 180 100% 50%;
+    --gauge-distance: 300 100% 50%;
+    --gauge-temperature: 25 100% 60%;
+
+    /* Glass effects */
+    --glass-bg: 220 45% 10%;
+    --glass-border: 180 100% 50%;
+    
+    /* Neon glows */
+    --neon-cyan: 180 100% 50%;
+    --neon-magenta: 300 100% 50%;
+    --neon-orange: 25 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-700;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(167, 233, 241, 0.3);
+  }
+
+  /* Neon glow effects */
+  .neon-glow-cyan {
+    filter: drop-shadow(0 0 8px hsl(var(--neon-cyan)));
+  }
+
+  .neon-glow-magenta {
+    filter: drop-shadow(0 0 8px hsl(var(--neon-magenta)));
+  }
+
+  .neon-glow-orange {
+    filter: drop-shadow(0 0 8px hsl(var(--neon-orange)));
+  }
+
+  .neon-text-cyan {
+    color: hsl(var(--neon-cyan));
+    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5);
+  }
+
+  .neon-border-cyan {
+    border-color: hsl(var(--neon-cyan));
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.3);
+  }
+
+  /* Smooth scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
